@@ -1,0 +1,23 @@
+In the Singleton design pattern, a Singleton object cannot be created from outside the Singleton class using the new operation because the class constructor is made private. Here’s why this is essential and how it works:
+
+1. Private Constructor:
+
+The primary characteristic of a Singleton class is that its constructor is marked private. This means that no external class can directly instantiate it using the new operator.
+By making the constructor private, the Singleton class controls the instantiation process, ensuring only one instance is created.
+
+2. Controlled Instantiation:
+
+Since the Singleton pattern allows only a single instance, the class itself provides a static method (often named getInstance() or similar) that manages the instantiation process.
+This method checks if an instance already exists. If it doesn’t, it creates one; if it does, it simply returns the existing instance.
+
+3. Encapsulation of Instance Control:
+
+With the constructor private, only the Singleton class has the authority to manage its own instance.
+This design guarantees that no other part of the program can bypass this mechanism, enforcing a single point of access to the Singleton instance and thereby controlling resource usage and potential issues from multiple instantiations.
+
+Explanation:
+
+- Since the constructor Singleton() is private, any attempt to create a new instance from outside using new Singleton() will result in a compilation error.
+- The getInstance() method controls instantiation by checking if instance is null (i.e., not created yet). If instance is null, it creates a new instance; otherwise, it returns the existing one.
+
+This approach guarantees there is only one instance of the Singleton class in the entire application, accessible from anywhere, while preventing external classes from creating additional instances.

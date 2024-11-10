@@ -1,0 +1,53 @@
+Step-by-Step Algorithm
+
+1. Define Age Ranges and Probabilities:
+
+- First, observe the age distribution of students in the group. For example, if you know the percentage of students that fall into specific age categories, define these ranges with corresponding probabilities.
+- Each age range will have a cumulative probability based on the distribution percentages. For example:
+  + Age 20: 16%
+  + Age 21: 18%
+  + Age 22: 18%
+  + Age 23: 16%
+  + Age 24: 14%
+  + Age 25: 7%
+  + Age 26: 5%
+  + Age 28: 2%
+  + Age 30: 2%
+  + Age 35: 2%
+- Calculate the cumulative probability for each age range. These cumulative values will help map random values to specific age categories.
+
+2. Initialize Counters:
+
+Initialize a counter for each age in the range to keep track of the number of times each age is drawn.
+
+3. Generate Random Ages Based on Distribution:
+
+- For each of the 1000 students (repeats 1000 times):
+  + Generate a random integer between 1 and 100 to simulate the probability.
+  + Use this random number to determine the age based on the cumulative probabilities:
+    . For example, if the random number is 15, which is less than or equal to 16, assign age 20.
+    . If the random number is 17, which is between 17 and 34, assign age 21, and so on.
+  + After determining the age, increment the counter for that age.
+
+4. Output Results:
+
+- After all 1000 ages have been generated, print the age distribution by showing each age’s count and its percentage share.
+- This gives you the approximate age distribution for the group, aligned with the specified probabilities.
+
+Explanation of the Algorithm
+
+1. Age Distribution Mapping:
+
+The cumulative probabilities help in mapping a random integer to a specific age.
+
+2. Random Number Generation:
+
+For each student, we generate a random integer from 1 to 100. This allows us to match the number to an age range, simulating the observed distribution.
+
+3. Efficiency:
+
+The algorithm is efficient as it relies on a single random number per age generation and uses an array lookup to find the corresponding age range.
+
+4. Accuracy:
+
+With 1000 iterations, this simulation should provide a good approximation of the original distribution.
