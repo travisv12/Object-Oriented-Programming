@@ -12,6 +12,8 @@ public class Main {
         // Serialize the instances to a file
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("enrollments.ser"))) {
             out.writeObject(enrollment);  // Serialize the Enrollment object
+            out.writeObject(student);  // Serialize the Student object
+            out.writeObject(course);  // Serialize the Course object
             System.out.println("Enrollment serialized to enrollments.ser");
         } catch (IOException e) {
             System.err.println("Serialization Error: " + e.getMessage());
@@ -20,7 +22,11 @@ public class Main {
         // Deserialize the instances from the file
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("enrollments.ser"))) {
             Enrollment deserializedEnrollment = (Enrollment) in.readObject();  // Deserialize the Enrollment object
+            Student deserializedStudent = (Student) in.readObject();  // Deserialize the Student object
+            Course deserializedCourse = (Course) in.readObject();  // Deserialize the Course object
             System.out.println("Deserialized Enrollment: " + deserializedEnrollment);
+            System.out.println("Deserialized Student: " + deserializedStudent);
+            System.out.println("Deserialized Course: " + deserializedCourse);
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Deserialization Error: " + e.getMessage());
         }
