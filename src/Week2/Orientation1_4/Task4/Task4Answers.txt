@@ -1,0 +1,26 @@
+Below is pseudocode for the main loop of the simulator.
+
+// Initialize the simulation by making the first customer arrival event.
+initialize();
+
+// Main simulation loop
+while (currentTime() < simulationEndTime) {
+    // Phase A: Update the simulation clock to the time of the next event
+    updateClockToNextEventTime();
+
+    // Phase B: Process all events scheduled for the current time
+    while (nextEventTime() == currentTime()) {
+        Event event = removeNextEvent();
+        processEvent(event);
+    }
+
+    // Phase C: Check and execute conditional events
+    for (ServicePoint servicePoint : servicePoints) {
+        if (!servicePoint.isReserved() && servicePoint.isOnQueue()) {
+            servicePoint.beginService();
+        }
+    }
+}
+
+// Finalize the simulation and output results
+finalizeSimulation();

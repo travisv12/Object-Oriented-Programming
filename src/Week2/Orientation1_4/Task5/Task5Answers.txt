@@ -1,0 +1,30 @@
+a) A-phase coding:
+
+The A-phase in the simulator is responsible for updating the simulation clock to the time of the next event.
+This ensures that the simulation progresses in time and processes events in the correct order.
+
+// A-phase: Update the simulation clock to the time of the next event
+clock.setClock(eventList.getNextEventTime());
+
+b) B-phase coding:
+The B-phase processes all events that are scheduled for the current time.
+This involves removing events from the event list and executing them.
+Each event type has specific actions associated with it.
+
+// B-phase: Process all events scheduled for the current time
+while (eventList.getNextEventTime() == clock.getClock()) {
+    Event event = eventList.remove();
+    runEvent(event); // Execute the event
+}
+
+c) C-phase coding:
+The C-phase checks and executes conditional events.
+These are events that depend on certain conditions being met,
+such as a service point being available and having customers in the queue.
+
+// C-phase: Check and execute conditional events
+for (ServicePoint servicePoint : servicePoints) {
+    if (!servicePoint.isReserved() && servicePoint.isOnQueue()) {
+        servicePoint.beginService();
+    }
+}

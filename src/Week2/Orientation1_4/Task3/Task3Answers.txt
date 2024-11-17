@@ -1,0 +1,55 @@
+System Design: Real-World Scenarios
+
+Below are two systems modeled using three or four service points, each representing real-world destinations. These systems are depicted using the graphical representation described in the Performance Variables section.
+
+System 1: Airport Check-In and Boarding
+
+Description:
+An airport system involves passengers going through multiple service points: check-in, security screening, and boarding.
+
+Diagram:
+
+Arrival --> [Queue] --> (Check-In) --> [Queue] --> (Security Screening) --> [Queue] --> (Boarding) --> Departure
+
+Service Points
+
+Check-In: Passengers check in their luggage and receive boarding passes.
+- Input Queue: Lines at the check-in counters.
+- Service Point: Staff processes passenger details.
+
+Security Screening: Ensures passengers meet safety regulations.
+- Input Queue: Passengers wait in lines.
+- Service Point: Security personnel check passengers and baggage.
+
+Boarding: Passengers are guided onto the airplane.
+- Input Queue: Passengers wait at the boarding gate.
+- Service Point: Gate agents scan boarding passes.
+
+System 2: Hospital Emergency Department
+
+Description:
+An emergency department involves patients going through triage, diagnosis, and treatment.
+
+Diagram:
+
+Arrival --> [Queue] --> (Triage) --> [Queue] --> (Diagnosis/Testing) --> [Queue] --> (Treatment) --> Discharge
+
+Service Points
+
+Triage: Patients are assessed based on urgency.
+- Input Queue: Patients wait to be assessed.
+- Service Point: Triage nurses evaluate patient condition.
+
+Diagnosis/Testing: Patients undergo medical tests (e.g., X-rays, bloodwork).
+- Input Queue: Patients wait for available diagnostic resources.
+- Service Point: Diagnostic staff and equipment process patients.
+
+Treatment: Patients receive appropriate medical care.
+- Input Queue: Patients wait for available doctors or treatment rooms.
+- Service Point: Doctors or nurses provide treatment.
+
+Discharge: Patients leave the hospital after being treated or referred.
+- Input Queue: Minimal or none.
+- Service Point: Administrative staff complete discharge paperwork.
+
+

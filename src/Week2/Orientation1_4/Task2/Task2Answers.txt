@@ -1,0 +1,53 @@
+Categories for Maintaining, Updating, and Computing Performance Measures
+
+Performance measures in a simulation can be broadly categorized into three groups based on their relationship to the service point and customer.
+These categories define how the measures are tracked, updated, and computed during the simulation:
+
+1. Service Point Metrics
+These measures focus on the operation of the service point itself, reflecting its efficiency and utilization.
+
+Key Metrics:
+
+B (Active Time in Service Point): Tracks the cumulative time the service point (e.g., a server or teller) is busy serving customers.
+- Maintained: Updated every time a service event starts or ends.
+- Updated: Incremented when a customer begins or completes service.
+
+U (Utilization): Computed as B/T, where T is the total observation time.
+- Computed: At the end of the simulation or periodically during it to assess system performance.
+
+2. Customer-Specific Metrics
+These metrics capture the experiences of individual customers, such as waiting times and response times.
+
+Key Metrics:
+
+Ri (Response Time): Tracks the total time from when a customer arrives until they leave the system.
+- Maintained: Measured for each customer based on arrival and departure timestamps.
+- Updated: Logged at the moment a customer completes service.
+
+W (Cumulative Waiting Time): Sum of all individual response times across customers.
+- Maintained: Accumulated for each completed customer.
+- Computed: Periodically or at the end of the simulation.
+
+3. System-Level Metrics
+These measures provide a holistic view of the entire system's performance over time, combining both service point and customer data.
+
+Key Metrics:
+
+X (Throughput): Tracks the number of customers served per unit time (X=C/T).
+- Maintained: Tracks the count of completed customers (C) and total observation time (T).
+- Computed: Continuously updated as customers are served.
+
+S (Service Time): Average service time for each customer (S=B/C).
+- Computed: After each customer is served or periodically during the simulation.
+
+R (Average Response Time): Tracks the average time spent by customers in the system (R=W/C).
+- Computed: Continuously or at the simulation’s conclusion.
+
+N (Average Queue Length): Average number of customers in the system (N=W/T).
+- Computed: By dividing cumulative waiting time by the total observation time.
+
+4. Summary
+
+Service Point Metrics: Monitor resource utilization and service efficiency (e.g., B, U).
+Customer-Specific Metrics: Track individual experiences within the system (e.g., Ri, W).
+System-Level Metrics: Provide an aggregate view of overall performance, combining service and customer data (e.g., X, S, R, N).

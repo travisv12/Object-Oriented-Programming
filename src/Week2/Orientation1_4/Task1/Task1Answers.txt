@@ -1,0 +1,74 @@
+Performance Measures in a Bank System
+
+Let’s consider a bank as the target system, specifically focusing on a single service point such as a teller counter.
+Customers arrive, queue, and are served by the teller.
+
+1. Directly Observable Variables
+
+A (Arrived Clients Count)
+This represents the total number of customers arriving at the bank within the observation period.
+For instance, if 100 customers come to the bank during a day, A = 100.
+
+C (Clients Serviced Count)
+This is the number of customers successfully served by the teller.
+If only 90 out of the 100 customers are served due to limited operating hours, C = 90.
+
+B (Active Time in Service Point)
+The cumulative time the teller spends actively serving customers.
+For instance, if the teller spends 7 out of 8 working hours serving customers, B = 7 hours.
+
+T (Total Simulation Time)
+This represents the total time over which the system is observed.
+In our example, the bank operates for 8 hours, so T = 8 hours.
+
+2. Derived Variables
+
+U (Service Point Utilization)
+Utilization measures how busy the teller is relative to their available time.
+It is calculated as: U = B / T
+For our example, U = 7 / 8 = 0.875 or 87.5%.
+
+X (Service Throughput)
+Throughput is the number of customers served per unit of time.
+It is given by: X = C / T
+If 90 customers are served in 8 hours, X = 90 / 8 = 11.25 customers per hour.
+
+S (Average Service Time)
+This is the average time the teller spends serving each customer.
+It is calculated as: S = B / C
+For our example, S = 7 / 90 = 0.0778 hours or approximately 4.67 minutes/customer.
+
+3. Additional Directly Observable Variables
+
+Ri (Response Time)
+For a single customer i, response time is the duration from their arrival at the queue to the completion of their service.
+For instance, if a customer arrives at 10:00, waits 10 minutes, and is served in 5 minutes, their Ri = 10 + 5 = 15 minutes.
+
+W (Cummulative Response Time)
+This is the total waiting time experienced by all customers.
+For example, if 90 customers collectively experience 450 minutes of waiting time: W = 450 minutes.
+
+4. Further Derived Variables
+
+R (Average Response Time)
+The average time a customer spends in the system (waiting + service): R = W / C
+If 90 customers collectively wait 450 minutes, R = 450 / 90 = 5 minutes.
+
+N (Average Queue Length)
+The average number of customers in the system (both waiting and being served) over time: N = W / T
+If 90 customers collectively wait 450 minutes over 8 hours = 480 minutes, N = 450 / 480 = 0.9375 customers.
+
+5. Meaning and Characterisation
+
+Utilization (U) measures system efficiency.
+A high U suggests good resource use but might indicate potential customer dissatisfaction due to long queues.
+
+Throughput (X) indicates how many customers the system serves per unit time and is crucial for assessing service productivity.
+
+Service Time (S) directly impacts throughput; faster service times improve system capacity.
+
+Response Time (R) reflects customer satisfaction, as lower response times mean faster service.
+
+Average Queue Length (N) helps assess the need for additional resources, like more tellers, to handle peak loads.
+
+By analyzing these variables, the bank can optimize its operations to balance customer satisfaction and resource efficiency.
