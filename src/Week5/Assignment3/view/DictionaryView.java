@@ -49,9 +49,5 @@ public class DictionaryView extends Application {
         String result = controller.searchForWord(word);
         meaningLabel.setText(result);
     }
-
-    public static void main(String[] args) {
-        DictionaryView.launch(DictionaryView.class);
-    }
 }
 
