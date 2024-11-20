@@ -2,36 +2,46 @@ package Week5.Assignment2.Task2;
 
 public class ThreadSafeTest {
     public static void main(String[] args) {
-        // Create a thread-safe list instance
-        ThreadSafeArrayList<String> safeList = new ThreadSafeArrayList<>();
+        ThreadSafeArrayList<String> threadSafeList = new ThreadSafeArrayList<>();
 
-        // Create a few ListUpdater tasks (threads) for adding and removing elements
-        Thread thread1 = new Thread(new ListUpdater(safeList, "add", "Apple"));
-        Thread thread2 = new Thread(new ListUpdater(safeList, "add", "Banana"));
-        Thread thread3 = new Thread(new ListUpdater(safeList, "remove", "Apple"));
-        Thread thread4 = new Thread(new ListUpdater(safeList, "add", "Cherry"));
-        Thread thread5 = new Thread(new ListUpdater(safeList, "remove", "Banana"));
+        // Runnable task to add elements
+        Runnable addTask = () -> {
+            for (int i = 0; i < 3; i++) {
+                threadSafeList.add(Thread.currentThread().getName() + "-Item-" + (i+1));
+            }
+        };
 
-        // Start all threads
-        thread1.start();
-        thread2.start();
-        thread3.start();
-        thread4.start();
-        thread5.start();
+        // Runnable task to remove elements
+        Runnable removeTask = () -> {
+            for (int i = 0; i < 2; i++) {
+                threadSafeList.remove(Thread.currentThread().getName() + "-Item-" + (i+1));
+            }
+        };
 
-        // Wait for all threads to finish
+        // Create multiple threads
+        Thread t1 = new Thread(addTask, "Thread-1");
+        Thread t2 = new Thread(addTask, "Thread-2");
+        Thread t3 = new Thread(removeTask, "Thread-1");
+        Thread t4 = new Thread(removeTask, "Thread-2");
+
+        // Start threads
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
+
+        // Wait for threads to finish
         try {
-            thread1.join();
-            thread2.join();
-            thread3.join();
-            thread4.join();
-            thread5.join();
+            t1.join();
+            t2.join();
+            t3.join();
+            t4.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        // Final print of the list
-        System.out.println("Final List: ");
-        safeList.printList();
+        // Print final size of the list
+        System.out.println("Final size of the list: " + threadSafeList.size());
+        threadSafeList.printlist();
     }
 }
